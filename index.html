@@ -1,0 +1,613 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Curso: Como ser um perfil Accountable</title>
+<style>
+:root{
+  --bg:#ffffff; --bg2:#f5f5f6; --card:#ffffff; --tx:#1d1d1f; --mut:#5c5c63; --bd:#dcdce0;
+  --red:#b3121f; --red2:#fbe9ea; --ok:#1f7a3d; --ok2:#e6f4ea; --warn:#8a5a00; --warn2:#fff4dc;
+}
+@media (prefers-color-scheme: dark){
+  :root{ --bg:#16161a; --bg2:#202026; --card:#1c1c21; --tx:#ececf0; --mut:#a4a4ad; --bd:#33333b;
+    --red:#ff6b75; --red2:#3a1c20; --ok:#6fd08c; --ok2:#173222; --warn:#f0c15a; --warn2:#3a2f14; }
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--tx);font-family:Arial,Helvetica,sans-serif;font-size:16px;line-height:1.6}
+header.hero{background:#8e0f1a;color:#fff;padding:48px 16px 40px}
+.wrap{max-width:900px;margin:0 auto;padding:0 16px}
+header.hero .wrap{padding:0}
+.hero small{letter-spacing:.12em;text-transform:uppercase;opacity:.85;font-size:13px}
+.hero h1{margin:8px 0 12px;font-size:clamp(28px,5vw,42px);line-height:1.15}
+.hero p{margin:0;max-width:680px;opacity:.95;font-size:17px}
+nav.toc{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--bd)}
+nav.toc .wrap{display:flex;gap:6px;overflow-x:auto;padding:8px 16px}
+nav.toc a{white-space:nowrap;text-decoration:none;color:var(--tx);font-size:14px;padding:6px 10px;border-radius:6px;border:1px solid var(--bd);background:var(--bg2)}
+nav.toc a:hover{border-color:var(--red);color:var(--red)}
+section{padding:36px 0 8px;border-bottom:1px solid var(--bd)}
+section:last-of-type{border-bottom:0}
+.tag{display:inline-block;font-size:12px;font-weight:bold;letter-spacing:.08em;text-transform:uppercase;color:var(--red);margin-bottom:4px}
+h2{font-size:28px;line-height:1.2;margin:0 0 12px}
+h3{font-size:20px;margin:26px 0 8px}
+p{margin:0 0 12px}
+ul,ol{margin:0 0 14px;padding-left:22px}
+li{margin-bottom:5px}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:10px;padding:16px 18px;margin:14px 0}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+@media (max-width:700px){.grid2,.grid3{grid-template-columns:1fr}}
+.key{background:var(--red2);border-left:4px solid var(--red);padding:12px 16px;border-radius:6px;margin:14px 0}
+.note{background:var(--warn2);border-left:4px solid var(--warn);padding:12px 16px;border-radius:6px;margin:14px 0;font-size:15px}
+.good{background:var(--ok2);border-left:4px solid var(--ok);padding:12px 16px;border-radius:6px;margin:14px 0}
+.obj{background:var(--bg2);border-radius:8px;padding:12px 16px;margin:12px 0}
+.obj b{color:var(--red)}
+table{border-collapse:collapse;width:100%;margin:12px 0;font-size:15px}
+th,td{border:1px solid var(--bd);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:var(--bg2)}
+.raci{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:14px 0}
+@media (max-width:700px){.raci{grid-template-columns:1fr 1fr}}
+.raci div{border:1px solid var(--bd);border-radius:8px;padding:10px;text-align:center;background:var(--card)}
+.raci b.l{display:block;font-size:30px;color:var(--red)}
+.raci .a{border-color:var(--red);background:var(--red2)}
+.ladder{margin:14px 0}
+.step{display:flex;gap:12px;align-items:center;border:1px solid var(--bd);border-radius:8px;padding:9px 12px;margin-bottom:6px;background:var(--card)}
+.step .n{flex:0 0 32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:bold;color:#fff}
+.step.low .n{background:#8a8a93}
+.step.high .n{background:var(--ok)}
+.step.low{margin-left:0}
+.step span.q{color:var(--mut);font-style:italic}
+.step.high{border-color:var(--ok)}
+details{border:1px solid var(--bd);border-radius:8px;margin:10px 0;background:var(--card)}
+summary{cursor:pointer;padding:11px 14px;font-weight:bold}
+details > div{padding:0 14px 12px}
+button,.btn{font-family:inherit;font-size:15px;cursor:pointer;border:1px solid var(--red);background:var(--red);color:#fff;border-radius:7px;padding:9px 16px}
+button.sec{background:transparent;color:var(--red)}
+label{display:block;font-weight:bold;margin:12px 0 4px;font-size:15px}
+input[type=text],input[type=date],textarea,select{width:100%;font-family:inherit;font-size:15px;padding:8px 10px;border:1px solid var(--bd);border-radius:6px;background:var(--bg);color:var(--tx)}
+textarea{min-height:70px;resize:vertical}
+.opt{display:block;width:100%;text-align:left;background:var(--card);color:var(--tx);border:1px solid var(--bd);margin:6px 0;border-radius:8px;padding:10px 12px}
+.opt:hover{border-color:var(--red)}
+.opt.right{border-color:var(--ok);background:var(--ok2)}
+.opt.wrong{border-color:var(--red);background:var(--red2)}
+.fb{display:none;margin-top:8px}
+.bar{height:14px;background:var(--bg2);border-radius:7px;overflow:hidden;border:1px solid var(--bd)}
+.bar i{display:block;height:100%;background:var(--red)}
+.beh{display:grid;grid-template-columns:1fr 170px 28px;gap:10px;align-items:center;margin:10px 0}
+@media (max-width:700px){.beh{grid-template-columns:1fr 110px 24px}}
+.week{border:1px solid var(--bd);border-radius:8px;padding:10px 14px;margin:8px 0;background:var(--card)}
+.week label{font-weight:normal;display:flex;gap:8px;align-items:flex-start;margin:6px 0}
+.src li{font-size:14px}
+.src a{color:var(--red)}
+footer{padding:30px 0 60px;color:var(--mut);font-size:14px}
+.pill{display:inline-block;font-size:12px;border:1px solid var(--bd);border-radius:20px;padding:1px 9px;color:var(--mut);margin-left:6px;vertical-align:middle;font-weight:normal}
+@media print{
+  nav.toc,button,.noprint{display:none!important}
+  header.hero{background:#fff;color:#000;padding:10px 0}
+  body{font-size:12pt}
+  section{page-break-inside:auto}
+  .card,.week,details{page-break-inside:avoid}
+  details{border:1px solid #999} details > div{display:block}
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <small>Grupo Gadens · Cultura Organizacional</small>
+    <h1>Como se tornar um perfil Accountable</h1>
+    <p>Um curso curto, prático e em linguagem simples: o que é accountability, como ela falha dentro das empresas, e o que você faz na rotina para responder pelos resultados.</p>
+  </div>
+</header>
+
+<nav class="toc"><div class="wrap">
+  <a href="#inicio">Início</a>
+  <a href="#m1">1 · O conceito</a>
+  <a href="#m2">2 · Estrutura</a>
+  <a href="#m3">3 · Casos</a>
+  <a href="#m4">4 · Individual</a>
+  <a href="#m5">5 · Ferramentas</a>
+  <a href="#m6">6 · Autoavaliação</a>
+  <a href="#m7">7 · Plano de 4 semanas</a>
+  <a href="#fontes">Fontes</a>
+</div></nav>
+
+<main class="wrap">
+
+<!-- INÍCIO -->
+<section id="inicio">
+  <span class="tag">Antes de começar</span>
+  <h2>Como usar este material</h2>
+  <p>O curso tem 7 módulos. Leva cerca de 60 a 90 minutos se você fizer os exercícios. Os módulos 6 e 7 são para você preencher: sua autoavaliação e seu plano de 4 semanas.</p>
+  <div class="card">
+    <b>Ao final você será capaz de:</b>
+    <ol>
+      <li>Explicar a diferença entre ser <i>responsável</i> e ser <i>accountable</i>.</li>
+      <li>Identificar quando a falta de accountability é problema da <b>estrutura</b> (papéis confusos) e quando é do <b>comportamento</b>.</li>
+      <li>Usar o RACI para dar um dono único a cada entrega.</li>
+      <li>Reconhecer em que degrau da Escada você e sua área estão.</li>
+      <li>Aplicar 6 comportamentos e o modelo PARE na rotina.</li>
+      <li>Montar um compromisso pessoal que outra pessoa consegue verificar.</li>
+    </ol>
+  </div>
+  <div class="note">
+    <b>De onde vem o conteúdo.</b> A base é o programa "Accountability" do Programa de Cultura Organizacional do Grupo Gadens. Onde eu acrescentei pesquisa externa, está indicado. No módulo "Fontes" você vê o que consegui confirmar e o que não consegui. Os exemplos da Gadens aparecem sem nomes de pessoas.
+  </div>
+</section>
+
+<!-- MÓDULO 1 -->
+<section id="m1">
+  <span class="tag">Módulo 1</span>
+  <h2>O que é accountability</h2>
+
+  <p><b>Accountability</b> é a disposição de assumir a responsabilidade pelos <b>resultados</b>, responder pelas próprias ações, tomar a iniciativa de resolver problemas e prestar contas dos compromissos assumidos.</p>
+  <p>Não há uma palavra única em português. "Responsabilização" chega perto, mas perde a ideia de <i>assumir antes</i> que algo dê errado. Por isso o termo em inglês continua em uso.</p>
+
+  <h3>Responsabilidade não é accountability</h3>
+  <table>
+    <tr><th></th><th>Responsabilidade</th><th>Accountability</th></tr>
+    <tr><td>Como surge</td><td>É designada</td><td>É assumida</td></tr>
+    <tr><td>Foco</td><td>Na tarefa</td><td>No resultado</td></tr>
+    <tr><td>Frase típica</td><td>"Fiz minha parte"</td><td>"Garanti que acontecesse"</td></tr>
+    <tr><td>Diante de problemas</td><td>Reage</td><td>Antecipa e resolve</td></tr>
+    <tr><td>Diante de falhas</td><td>Busca justificativas</td><td>Busca alternativas</td></tr>
+  </table>
+  <div class="key">Accountability não substitui a responsabilidade. Ela a eleva: transforma execução em compromisso com o resultado.</div>
+
+  <h3>Por que isso importa para a empresa</h3>
+  <div class="grid2">
+    <div class="card"><b>Sem accountability clara</b>
+      <ul><li>Prazos escorregam sem dono</li><li>Erros se repetem sem aprendizado</li><li>Conflitos entre áreas crescem</li><li>A liderança fica sobrecarregada</li><li>Cultura de desculpas</li></ul></div>
+    <div class="card"><b>Com accountability clara</b>
+      <ul><li>Prazos têm dono específico</li><li>Desvios são antecipados</li><li>Áreas colaboram com clareza</li><li>A liderança libera energia</li><li>Cultura de entrega</li></ul></div>
+  </div>
+
+  <h3>As duas dimensões</h3>
+  <p>A tese central do programa é que accountability tem <b>duas dimensões que andam juntas</b>. A primeira, a estrutural, vem antes.</p>
+  <div class="grid2">
+    <div class="card"><b>Estrutural</b> <span class="pill">papéis e processos</span>
+      <ul><li>Quem responde por quê (RACI)</li><li>Metas combinadas e mensuráveis</li><li>Ritmo de acompanhamento</li><li>Consequências claras</li></ul></div>
+    <div class="card"><b>Individual</b> <span class="pill">comportamento</span>
+      <ul><li>Apropriar-se do resultado</li><li>Antecipar problemas</li><li>Comunicar desvios antes</li><li>Entregar o prometido</li></ul></div>
+  </div>
+  <div class="obj"><b>Para fixar:</b> o seu esforço individual não compensa um desenho de processo que deixa a entrega sem dono. E um bom desenho não funciona com quem foge da responsabilidade. O curso trata os dois.</div>
+</section>
+
+<!-- MÓDULO 2 -->
+<section id="m2">
+  <span class="tag">Módulo 2</span>
+  <h2>A dimensão estrutural: quem responde por quê</h2>
+
+  <h3>2.1 O gatilho da fuga</h3>
+  <p>Quando a responsabilidade por uma entrega é difusa, isto é, dividida entre várias áreas sem que nenhuma responda pelo resultado final, a reação humana previsível é <b>jogar a culpa para fora</b>. Todos "respondem", logo ninguém responde.</p>
+  <p>A pesquisa de Philip Tetlock (1985) é a base citada no programa. Ela mostra que o comportamento das pessoas muda conforme sabem, ou não, <b>como e por quem serão avaliadas</b>.</p>
+  <div class="card">
+    <b>Três frases que você já ouviu?</b>
+    <ul>
+      <li>"O fornecedor atrasou o material. Não tinha como prever."</li>
+      <li>"Eu já enviei o e-mail para o CSC. A culpa dos juros é deles."</li>
+      <li>"Fiz minha parte. Passei um e-mail para a outra área."</li>
+    </ul>
+    <p>O que elas têm em comum? <b>Cada pessoa cumpriu o próprio passo e ninguém respondeu pelo resultado inteiro.</b> Isso é sintoma de desenho organizacional, não só de atitude.</p>
+  </div>
+
+  <h3>2.2 O RACI e a regra do único "A"</h3>
+  <div class="raci">
+    <div><b class="l">R</b><b>Responsável</b><br>Executa a tarefa. Pode haver vários.</div>
+    <div class="a"><b class="l">A</b><b>Accountable</b><br>Responde pelo resultado e aprova. <b>Só um.</b></div>
+    <div><b class="l">C</b><b>Consultado</b><br>Opina antes.</div>
+    <div><b class="l">I</b><b>Informado</b><br>Fica sabendo depois.</div>
+  </div>
+  <div class="key"><b>Regra de ouro:</b> cada entrega tem <b>exatamente um "A"</b>. Se não há nenhum, ou se há mais de um, a entrega precisa ser redesenhada. Isso é a "zona de fuga".</div>
+  <table>
+    <tr><th>Pergunta</th><th>R</th><th>A</th></tr>
+    <tr><td>O que cada um diz</td><td>"O que eu devo fazer?"</td><td>"Pelo que eu respondo?"</td></tr>
+    <tr><td>Foco</td><td>Execução das tarefas</td><td>Resultado final</td></tr>
+    <tr><td>Quantidade</td><td>Pode ser mais de um</td><td>Apenas um por entrega</td></tr>
+    <tr><td>Risco de fuga</td><td>Distribuído</td><td>Concentrado</td></tr>
+  </table>
+  <p><b>Como montar um RACI simples</b> (adaptação minha, no padrão usado em gestão de projetos):</p>
+  <ol>
+    <li>Liste as <b>entregas</b> (substantivos: "NF paga", "contrato assinado"), não as atividades.</li>
+    <li>Escreva o <b>"A"</b> primeiro, com nome do cargo ou da área.</li>
+    <li>Depois liste os "R" (quem faz), os "C" (quem opina antes) e os "I" (quem fica sabendo).</li>
+    <li>Confira: há <b>um e só um</b> "A" por linha?</li>
+    <li>Combine <b>prazo por etapa</b> e <b>o que acontece se o prazo passar</b> (escalada).</li>
+    <li>Divulgue <b>antes</b> do problema. Accountability definida depois do fato não funciona como regra.</li>
+  </ol>
+
+  <h3>2.3 Duas áreas accountable = ninguém accountable</h3>
+  <p>Exemplo do programa: o material chegou atrasado. Obras diz "não fui eu que contratei". Suprimentos diz "a especificação veio errada". O ponto crítico não tem dono.</p>
+  <p><b>Solução:</b> Obras é accountable pela <i>especificação</i>. Suprimentos é accountable pela <i>contratação do que foi especificado</i>. Essa divisão precisa estar escrita e ser conhecida <b>antes</b> do problema.</p>
+
+  <h3>2.4 Os dois eixos: horizontal e vertical</h3>
+  <div class="grid2">
+    <div class="card"><b>Vertical</b> (entre níveis)<br>Conselho ↔ Diretoria ↔ Gerência ↔ Times.<br><span style="color:var(--mut)">Aqui a cobrança costuma funcionar.</span></div>
+    <div class="card"><b>Horizontal</b> (entre áreas e pares)<br>Obras ↔ Suprimentos, Engenharia ↔ Comercial, CSC ↔ Projetos.<br><span style="color:var(--mut)">É onde o problema vive.</span></div>
+  </div>
+  <p>Quando a accountability horizontal falha, surgem <b>feudos</b>: cada área entrega resultados para dentro e muros para fora; a informação é retida como poder; as reuniões viram defesa de território; o cliente interno é tratado pior que o externo; e os problemas sobem ao topo em vez de serem resolvidos entre pares.</p>
+
+  <h3>2.5 Quando duas cobranças legítimas colidem</h3>
+  <p>O pesquisador Jonathan Koppell (2005) deu o nome de <b>"Multiple Accountabilities Disorder"</b> ao problema de quem recebe expectativas conflitantes de accountability. Ele estudou organizações públicas (o caso foi o ICANN). O programa usa a ideia, por analogia, para o conflito entre <b>prazo</b> e <b>qualidade</b> na obra:</p>
+  <div class="grid2">
+    <div class="card"><b>Prazo</b> · Diretoria / Incorporação<br>O cronograma é compromisso com investidores e clientes. Legítimo.</div>
+    <div class="card"><b>Qualidade</b> · Engenharia / Obras<br>Entrega sem defeito é compromisso técnico e de reputação. Legítimo.</div>
+  </div>
+  <div class="key">Sem alguém com autoridade para decidir quando as duas colidem, a decisão sai por inércia. E a inércia favorece o prazo, porque o cronograma é visível e o defeito aparece só depois. <b>Solução:</b> definir antes o critério de desempate e nomear um <b>Sponsor</b> com a palavra final.</div>
+
+  <h3>2.6 A pergunta que vem primeiro</h3>
+  <div class="grid2">
+    <div class="card"><b>"Quem fez isso?"</b><br>Pergunta de punição. Inibe o relato honesto: qualquer desvio contado vira risco pessoal para quem fala.</div>
+    <div class="card"><b>"Que condição permitiu isso?"</b><br>Pergunta de correção. Mantém o fluxo de informação para achar a causa raiz, sem abandonar a accountability.</div>
+  </div>
+  <p>Essa ideia vem do trabalho de Sidney Dekker sobre <i>Just Culture</i> (cultura justa), que separa o olhar que pune o passado do olhar que corrige para frente.</p>
+  <div class="note"><b>Cuidado com a leitura errada.</b> Cultura justa <b>não</b> é cultura sem consequência. A primeira pergunta depois de um atraso é estrutural. A segunda, reservada a casos identificáveis de negligência real, continua existindo. O modelo troca a cobrança ineficaz feita <i>depois</i> do fato por clareza combinada <i>antes</i> dele, o que tende a ser mais exigente, não menos.</div>
+
+  <details>
+    <summary>Exercício rápido: este RACI está certo?</summary>
+    <div>
+      <p>Entrega: "Contrato de fornecedor assinado". Jurídico (A), Suprimentos (A), Obras (R), Diretoria (I).</p>
+      <p><b>Resposta:</b> não. Há dois "A" (Jurídico e Suprimentos). Escolha um. Se a entrega é "contrato assinado", faz sentido o "A" ser quem puxa o processo de ponta a ponta, por exemplo Suprimentos, com Jurídico como "R" na minuta. O programa mostra um caso de contrato com cinco semanas de atraso na assinatura em que cada área esperava a validação de outra.</p>
+    </div>
+  </details>
+</section>
+
+<!-- MÓDULO 3 -->
+<section id="m3">
+  <span class="tag">Módulo 3</span>
+  <h2>Casos reais da Gadens</h2>
+  <p>Escolha uma resposta e veja a explicação. Os casos são os do programa.</p>
+
+  <div class="card" data-quiz data-correct="4">
+    <b>Caso 1: a NF sem dono</b>
+    <p>Um boleto acima de R$ 100 mil chegou ao CSC quase um mês após o vencimento. Nove dias de e-mails entre três áreas (solicitante, construtora e Contas a Pagar) sem que ninguém assumisse o processo de ponta a ponta. Resultado: R$ 1.100 de juros e risco de protesto.</p>
+    <p><b>Quem deveria ter sido o "A" único dessa NF?</b></p>
+    <button class="opt" data-i="0">O solicitante que gerou o pedido</button>
+    <button class="opt" data-i="1">O CSC / Contas a Pagar</button>
+    <button class="opt" data-i="2">A construtora responsável pela obra</button>
+    <button class="opt" data-i="3">Ninguém individualmente: é problema de processo</button>
+    <button class="opt" data-i="4">Precisaria de um único dono designado previamente via RACI</button>
+    <div class="fb">
+      <p><b>Resposta do programa: a última.</b> Nenhuma área tinha "culpa" e todas tinham. Faltava um RACI para o fluxo de NFs acima de certo valor, então cada área passou a bola legitimamente dentro do próprio processo.</p>
+      <p><b>Solução:</b> definir antes quem é o "A" único para NFs acima de X valor, com prazo máximo para cada etapa e escalada automática se o prazo não for cumprido.</p>
+    </div>
+  </div>
+
+  <div class="card" data-quiz data-correct="2">
+    <b>Caso 2: prazo versus qualidade</b>
+    <p>A pressão pelo cronograma fez a conferência final de obras ser abreviada. Problemas que poderiam ter sido corrigidos antes chegaram ao cliente na primeira experiência com o imóvel.</p>
+    <p><b>Quem deveria ser accountable pela qualidade da entrega?</b></p>
+    <button class="opt" data-i="0">O engenheiro de obras, que aprovou a finalização</button>
+    <button class="opt" data-i="1">A diretoria, que definiu o prazo</button>
+    <button class="opt" data-i="2">Ambos, mas sem critério de desempate ninguém decide de fato</button>
+    <button class="opt" data-i="3">O gerente de projeto, como Sponsor do resultado final</button>
+    <div class="fb">
+      <p><b>Gabarito do programa: a opção "Ambos…"</b>, como exemplo de Multiple Accountabilities Disorder. As duas cobranças são legítimas. Sem um Sponsor com autoridade para arbitrar, a decisão sai por inércia e favorece o prazo.</p>
+      <p><b>O que fazer:</b> definir os critérios de desempate antes e nomear um Sponsor com palavra final. (A opção D descreve a solução, mas só funciona se o papel for combinado e escrito antes.)</p>
+    </div>
+  </div>
+
+  <div class="card" data-quiz data-correct="3">
+    <b>Caso 3: em que degrau está esta cena?</b>
+    <p>"O material chegou atrasado e a frente parou. Engenharia disse que o pedido foi feito certo. Suprimentos disse que a especificação estava incompleta. Ninguém assumiu o ponto de origem, e o mesmo erro se repetiu na próxima torre."</p>
+    <p><b>Qual frase combina com a atitude de quem <u>resolveria</u> o caso?</b></p>
+    <button class="opt" data-i="0">"Isso não é comigo."</button>
+    <button class="opt" data-i="1">"O sistema é assim mesmo, sempre foi assim."</button>
+    <button class="opt" data-i="2">"Alguém deveria ter feito algo."</button>
+    <button class="opt" data-i="3">"Vou verificar o que aconteceu e evitar que se repita."</button>
+    <div class="fb">
+      <p><b>Resposta: a última</b> (degraus 6 e 7: reconhece e aceita; encontra soluções). A cena em si está no <b>degrau 4</b>, "culpa os outros" (leitura minha): cada área aponta a outra.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <b>Outros casos do programa, para você analisar</b>
+    <p style="color:var(--mut);font-size:15px">Para cada um, pergunte: <i>quem era o "A"? Em que ponto a entrega ficou sem dono?</i></p>
+    <ul>
+      <li>NF esquecida por três meses: nem o solicitante nem o CSC notaram. O erro só veio à tona quando o fornecedor cobrou juros.</li>
+      <li>Erro de compatibilização de projetos (estrutural × elétrico) passou por três áreas antes de alguém registrar formalmente. Cada área repassou sem registrar.</li>
+      <li>Chamados abertos percorrem várias áreas e voltam ao ponto de origem sem resolução. O problema circula, não avança.</li>
+      <li>Material atrasado sem que nenhuma área assumisse acionar o fornecedor e avisar o canteiro.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- MÓDULO 4 -->
+<section id="m4">
+  <span class="tag">Módulo 4</span>
+  <h2>A dimensão individual: o que muda em você</h2>
+
+  <h3>4.1 Locus de controle: onde você coloca a causa</h3>
+  <div class="grid2">
+    <div class="card"><b>Locus interno</b><br>Acredita que o resultado depende das próprias ações, escolhas e esforço. Quando dá errado, a 1ª pergunta é: <i>o que eu fiz ou deixei de fazer?</i></div>
+    <div class="card"><b>Locus externo</b><br>Atribui o resultado ao ambiente, à sorte, aos outros, ao sistema. Quando dá errado, a explicação está fora: <i>o que me fizeram, o que me impediram, o que não me deram.</i></div>
+  </div>
+  <p>O conceito vem da pesquisa de Julian Rotter (1966). O programa reforça que <b>não é traço fixo de personalidade</b>: é uma postura que se aprende com consciência, prática e a disposição de fazer a pergunta incômoda antes da explicação confortável.</p>
+  <div class="note">Os estudos de Rotter associam locus mais interno a resultados mais positivos, mas o próprio campo debate o conceito. Use-o como espelho, não como rótulo para pôr nos outros. O ambiente também pesa, e o módulo 2 mostra que há causas que são do desenho do processo.</div>
+
+  <h3>4.2 A Escada: 8 degraus da accountability</h3>
+  <p>Os degraus de 1 a 5 são de fuga. Os de 6 a 8 são de accountability. O objetivo não é nunca cair, e sim <b>perceber em que degrau você está e subir</b>.</p>
+  <div class="ladder">
+    <div class="step high"><div class="n">8</div><div><b>Entrega resultados</b><br><span class="q">"Comprometido e responsável"</span></div></div>
+    <div class="step high"><div class="n">7</div><div><b>Encontra soluções</b><br><span class="q">"O que posso fazer para resolver?"</span></div></div>
+    <div class="step high"><div class="n">6</div><div><b>Reconhece e aceita</b><br><span class="q">"Ok, é minha responsabilidade"</span></div></div>
+    <div class="step low"><div class="n">5</div><div><b>Espera / Vítima</b><br><span class="q">"Alguém deveria ter feito algo"</span></div></div>
+    <div class="step low"><div class="n">4</div><div><b>Culpa os outros</b><br><span class="q">"A culpa é de Suprimentos / Projetos"</span></div></div>
+    <div class="step low"><div class="n">3</div><div><b>Culpa o sistema</b><br><span class="q">"Assim não dá para trabalhar"</span></div></div>
+    <div class="step low"><div class="n">2</div><div><b>Finge não saber</b><br><span class="q">"Eu não sabia que era minha função"</span></div></div>
+    <div class="step low"><div class="n">1</div><div><b>Nega / ignora</b><br><span class="q">"Não sei nada sobre isso"</span></div></div>
+  </div>
+  <p style="color:var(--mut);font-size:14px">Nota de origem: a ideia de uma "linha" entre culpa e accountability aparece no livro <i>The Oz Principle</i> (Connors, Smith e Hickman), que fala em quatro passos acima da linha: <b>Ver, Assumir, Resolver e Executar</b> (See It, Own It, Solve It, Do It). A escada de 8 degraus do programa é uma versão própria; não achei a escada idêntica na fonte original.</p>
+
+  <h3>4.3 Frases que revelam a cultura</h3>
+  <div class="grid2">
+    <div class="card"><b>Baixa accountability</b><ul><li>"Ninguém me avisou."</li><li>"Sempre foi assim."</li><li>"Não é comigo."</li><li>"Não tenho tempo."</li><li>"A culpa é deles."</li></ul></div>
+    <div class="card"><b>Alta accountability</b><ul><li>"Vou verificar."</li><li>"Assumo essa ação."</li><li>"O que podemos fazer?"</li><li>"Como evitamos novamente?"</li><li>"Qual é o plano?"</li></ul></div>
+  </div>
+  <div class="card">
+    <b>Em obra e engenharia</b>
+    <table>
+      <tr><th></th><th>Baixa</th><th>Alta</th></tr>
+      <tr><td>Segurança</td><td>"Não sou técnico de segurança."</td><td>"Vi um risco e interrompi a atividade."</td></tr>
+      <tr><td>Qualidade</td><td>"Meu serviço terminou."</td><td>"Vou verificar se a próxima etapa poderá ser executada sem problemas."</td></tr>
+      <tr><td>Prazo</td><td>"O cronograma atrasou por culpa do fornecedor."</td><td>"Quais ações recuperam o cronograma?"</td></tr>
+    </table>
+  </div>
+
+  <h3>4.4 Os 6 comportamentos da pessoa accountable</h3>
+  <table>
+    <tr><th>#</th><th>Comportamento</th><th>Na prática</th></tr>
+    <tr><td>1</td><td><b>Assume compromissos claros</b></td><td>Não diz "vou tentar". Diz "entrego até sexta-feira".</td></tr>
+    <tr><td>2</td><td><b>Antecipa riscos</b></td><td>Pergunta: o que pode dar errado?</td></tr>
+    <tr><td>3</td><td><b>Comunica com transparência</b></td><td>Avisa o desvio antes que outros percebam.</td></tr>
+    <tr><td>4</td><td><b>Resolve problemas</b></td><td>Leva a solução junto com o problema.</td></tr>
+    <tr><td>5</td><td><b>Aprende com os erros</b></td><td>Busca aprendizado, não culpado.</td></tr>
+    <tr><td>6</td><td><b>Tem humildade</b></td><td>Reconhece limites, pede ajuda, não se omite por orgulho.</td></tr>
+  </table>
+
+  <h3>4.5 Os dois polos: entrega e pedido</h3>
+  <p>A falha de accountability, com frequência, não está só em quem deveria entregar, mas <b>em quem fez o pedido</b>.</p>
+  <div class="grid2">
+    <div class="card"><b>Polo da entrega</b><br>Quem é accountable pelo resultado. Assume o compromisso, executa e responde pelo que prometeu.</div>
+    <div class="card"><b>Polo do pedido</b><br>Quem é accountable por fazer pedidos claros o bastante para que o compromisso do outro seja possível.</div>
+  </div>
+  <div class="good"><b>Checklist de pedido claro</b> (adaptação minha):
+    <ul>
+      <li>O que exatamente eu preciso? Qual é o critério de "pronto"?</li>
+      <li>Para quando? (data, não "o quanto antes")</li>
+      <li>Quem é o "A" dessa entrega? Já combinamos?</li>
+      <li>Quais informações e acessos a pessoa precisa de mim?</li>
+      <li>O que acontece se o prazo não for cumprido, e quem eu aviso?</li>
+      <li>Ficou por escrito?</li>
+    </ul>
+  </div>
+
+  <h3>4.6 O modelo PARE</h3>
+  <div class="grid2">
+    <div class="card"><b style="color:var(--red);font-size:22px">P</b> <b>Prometa menos, entregue mais</b><br>Compromissos realistas, não aspiracionais.</div>
+    <div class="card"><b style="color:var(--red);font-size:22px">A</b> <b>Antecipe riscos</b><br>Planejamento preventivo: o que pode dar errado?</div>
+    <div class="card"><b style="color:var(--red);font-size:22px">R</b> <b>Resolva problemas</b><br>Não apenas reporte. Leve a solução com o problema.</div>
+    <div class="card"><b style="color:var(--red);font-size:22px">E</b> <b>Execute e acompanhe</b><br>Monitore até a conclusão, não só até a entrega da tarefa.</div>
+  </div>
+  <p style="color:var(--mut);font-size:14px">O próprio programa avisa: PARE é um lembrete de bolso, não um conceito de pesquisa.</p>
+</section>
+
+<!-- MÓDULO 5 -->
+<section id="m5">
+  <span class="tag">Módulo 5</span>
+  <h2>Ferramentas para a rotina</h2>
+  <p>Estas ferramentas juntam o programa e pesquisa externa. As marcadas como "externa" vêm de estudos que consegui confirmar.</p>
+
+  <h3>5.1 Plano "se… então…" <span class="pill">externa</span></h3>
+  <p>Intenção boa não basta. Pesquisas sobre <i>implementation intentions</i> (Gollwitzer e Sheeran, 2006, uma análise de 94 estudos) mostram que quem escreve <b>"se acontecer X, então faço Y"</b> cumpre mais o que planejou do que quem só tem a intenção. A análise encontrou efeito médio a grande (d = 0,65).</p>
+  <div class="good">
+    <b>Modelos para o seu dia a dia:</b>
+    <ul>
+      <li><b>Se</b> uma atividade minha estiver a 3 dias do prazo e eu perceber que não termino, <b>então</b> aviso o solicitante no mesmo dia, com uma nova data e o motivo.</li>
+      <li><b>Se</b> eu pedir algo a outra área e não houver resposta em 48 horas, <b>então</b> cobro por mensagem e comento na atividade.</li>
+      <li><b>Se</b> eu ouvir "isso é com outra área", <b>então</b> pergunto "quem é o 'A' disso?" e registro a resposta.</li>
+    </ul>
+  </div>
+
+  <h3>5.2 Reporte de desvio semanal</h3>
+  <p>Uma vez por semana, em 5 minutos, escreva para quem acompanha você (formato meu):</p>
+  <div class="card">
+    <ol>
+      <li><b>Vence esta semana:</b> as entregas com data.</li>
+      <li><b>Em risco:</b> o que pode atrasar e por quê.</li>
+      <li><b>Plano:</b> o que vou fazer para recuperar, e quando.</li>
+      <li><b>Preciso de:</b> o que dependo de outra área ou da liderança, com nome da área e data.</li>
+    </ol>
+  </div>
+
+  <h3>5.3 Segurança psicológica: avisar o desvio precisa ser seguro <span class="pill">externa</span></h3>
+  <p>A pesquisadora Amy Edmondson (1999) estudou 51 equipes de uma empresa industrial. Ela mostrou que equipes em que as pessoas sentem que podem assumir riscos de falar (<b>segurança psicológica</b>) apresentam mais <b>comportamento de aprendizagem</b>, e isso se liga ao desempenho.</p>
+  <p><b>Ligação com o tema:</b> comunicar desvios antes (comportamento 3) só acontece se contar o problema não for punido. Por isso a pergunta "que condição permitiu isso?" vem antes de "quem fez isso?". Quem lidera cria o ambiente; quem é liderado usa o ambiente.</p>
+
+  <h3>5.4 Como lidar quando a estrutura falha</h3>
+  <ol>
+    <li><b>Nomeie a lacuna sem acusar:</b> "Essa entrega não tem um 'A' definido. Quem fica com ela?"</li>
+    <li><b>Proponha o RACI</b> em uma linha e peça concordância por escrito.</li>
+    <li><b>Registre a decisão</b> onde todos veem (ClickUp, ata, e-mail com todos).</li>
+    <li><b>Escale com fato e proposta,</b> não com queixa: o que travou, quanto custa, o que você propõe.</li>
+  </ol>
+
+  <h3>5.5 Para quem lidera</h3>
+  <ul>
+    <li>Dar um "A" único e escrito a cada entrega, com prazo e escalada definidos.</li>
+    <li>Combinar os critérios de avaliação <b>antes</b> do trabalho, não depois do atraso.</li>
+    <li>Definir um Sponsor para decidir quando prazo e qualidade colidem.</li>
+    <li>Fazer a pergunta "que condição permitiu isso?" primeiro, e depois separar os poucos casos de negligência real.</li>
+    <li>Reconhecer publicamente quem avisa o desvio cedo.</li>
+  </ul>
+</section>
+
+<!-- MÓDULO 6 -->
+<section id="m6">
+  <span class="tag">Módulo 6</span>
+  <h2>Autoavaliação</h2>
+  <p>Dê uma nota de 1 (quase nunca) a 5 (quase sempre) para cada comportamento, pensando nas <b>últimas 4 semanas</b>. Seja honesto. Ninguém vê, e a avaliação fica só no seu navegador.</p>
+  <div id="beh"></div>
+  <div class="card" id="aval" style="display:none"></div>
+  <p class="noprint"><button class="sec" id="limpaAval">Limpar notas</button></p>
+  <div class="note">Esta é uma ferramenta de reflexão feita para este curso, não um teste validado. O valor está em escolher <b>um ou dois</b> pontos para trabalhar no plano.</div>
+</section>
+
+<!-- MÓDULO 7 -->
+<section id="m7">
+  <span class="tag">Módulo 7</span>
+  <h2>Seu plano de 4 semanas</h2>
+  <p>É o compromisso verificável do programa. Individual, por escrito. Preencha os campos; o que você digitar fica salvo neste navegador. Use <b>Imprimir</b> para guardar em PDF ou levar à conversa com sua liderança.</p>
+
+  <label for="p_trans">1. Uma transição entre áreas que você enfrenta no dia a dia</label>
+  <input type="text" id="p_trans" placeholder="Ex.: documento aprovado → publicado nos ambientes">
+  <label for="p_deg">2. Em qual degrau da Escada fica a reação habitual da sua área quando essa transição falha? (1 a 8)</label>
+  <select id="p_deg"><option value="">Escolha</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option></select>
+  <label for="p_ex">Um exemplo recente que justifica a escolha</label>
+  <textarea id="p_ex"></textarea>
+  <label for="p_beh">3. Comportamento(s) que você vai trabalhar (veja a autoavaliação)</label>
+  <input type="text" id="p_beh">
+  <label for="p_acao">4. O que você vai fazer de diferente, especificamente, nas próximas 4 semanas?</label>
+  <textarea id="p_acao" placeholder="Seja concreto. Ex.: colocar prazo em 100% das minhas atividades"></textarea>
+  <label for="p_se">5. Seu plano "se… então…"</label>
+  <textarea id="p_se" placeholder="Se ___, então ___"></textarea>
+  <label for="p_med">6. Como você ou sua liderança vão saber, em 4 semanas, que mudou?</label>
+  <textarea id="p_med" placeholder="Um sinal que dê para contar ou ver. Ex.: nenhum desvio descoberto por terceiros"></textarea>
+  <label for="p_quem">7. Quem acompanha o plano com você?</label>
+  <input type="text" id="p_quem" placeholder="Cargo ou área">
+  <label for="p_ini">Data de início</label>
+  <input type="date" id="p_ini">
+
+  <h3>Roteiro semanal (marque ao cumprir)</h3>
+  <div class="week"><b>Semana 1: ver</b>
+    <label><input type="checkbox" id="w1a"> Coloquei data de entrega em todas as minhas atividades abertas (ou registrei que foram canceladas, com motivo).</label>
+    <label><input type="checkbox" id="w1b"> Comentei o estado real das atividades paradas: feito, trava e próximo passo.</label>
+    <label><input type="checkbox" id="w1c"> Anotei em que degrau da Escada reagi nas situações da semana.</label></div>
+  <div class="week"><b>Semana 2: combinar</b>
+    <label><input type="checkbox" id="w2a"> Defini o "A" de cada entrega que eu peço a outras áreas.</label>
+    <label><input type="checkbox" id="w2b"> Usei o checklist de pedido claro em pelo menos 3 pedidos.</label>
+    <label><input type="checkbox" id="w2c"> Enviei meu primeiro reporte de desvio semanal.</label></div>
+  <div class="week"><b>Semana 3: antecipar</b>
+    <label><input type="checkbox" id="w3a"> Avisei um desvio antes que alguém perguntasse.</label>
+    <label><input type="checkbox" id="w3b"> Levei uma solução junto com um problema.</label>
+    <label><input type="checkbox" id="w3c"> Apliquei meu plano "se… então…" pelo menos uma vez.</label></div>
+  <div class="week"><b>Semana 4: acompanhar e medir</b>
+    <label><input type="checkbox" id="w4a"> Acompanhei uma entrega até o resultado, não só até a minha parte.</label>
+    <label><input type="checkbox" id="w4b"> Conferi meu sinal de mudança com quem me acompanha.</label>
+    <label><input type="checkbox" id="w4c"> Repeti a autoavaliação do módulo 6 e comparei.</label></div>
+
+  <p class="noprint"><button id="imprime">Imprimir ou salvar em PDF</button> <button class="sec" id="limpaPlano">Limpar o plano</button></p>
+  <div class="key">
+    <b>Antes de sair da sala:</b> na próxima vez que algo atrasar ou não estiver correto, qual será a primeira pergunta?<br>
+    <b>"Que condição permitiu isso, e o que posso fazer para mudar?"</b>
+  </div>
+</section>
+
+<!-- FONTES -->
+<section id="fontes">
+  <span class="tag">Fontes</span>
+  <h2>Fontes e limites deste material</h2>
+  <h3>Base principal</h3>
+  <ul class="src"><li>Programa de Cultura Organizacional · "Accountability: cultura de responsabilidade e entrega de resultados" (43 slides), Grupo Gadens. O conteúdo dos módulos 1 a 4, os casos do módulo 3, os 6 comportamentos, a Escada e o PARE vêm daí.</li></ul>
+  <h3>Pesquisa externa (consultada em novembro de 2026)</h3>
+  <ul class="src">
+    <li>Tetlock, P. E. (1985). <i>Accountability: The Neglected Social Context of Judgment and Choice.</i> Resumo em <a href="https://explore.psychsafety.com/n/tetlock-1985/" target="_blank" rel="noopener">psychsafety.com</a> (fonte secundária; o texto original é pago e eu não abri).</li>
+    <li>Koppell, J. G. S. (2005). <i>Pathologies of Accountability: ICANN and the Challenge of "Multiple Accountabilities Disorder".</i> Public Administration Review, 65(1), 94–108. DOI 10.1111/j.1540-6210.2005.00434.x. <a href="https://law-journals-books.vlex.com/vid/pathologies-of-accountability-icann-900915855" target="_blank" rel="noopener">Resumo</a> (li o resumo, não o texto completo).</li>
+    <li>Dekker, S. <i>Just Culture.</i> <a href="https://sidneydekker.com/wp-content/uploads/2024/12/RestorativeJustCultureChecklist.pdf" target="_blank" rel="noopener">Checklist de cultura justa restaurativa</a> (material do autor).</li>
+    <li>Connors, R.; Smith, T.; Hickman, C. <i>The Oz Principle.</i> <a href="https://en.wikipedia.org/wiki/The_Oz_Principle" target="_blank" rel="noopener">Visão geral</a>.</li>
+    <li>Rotter, J. B. (1966). <i>Generalized expectancies for internal versus external control of reinforcement.</i> Psychological Monographs, 80(1), 1–28. <a href="https://pubmed.ncbi.nlm.nih.gov/5340840/" target="_blank" rel="noopener">PubMed</a>.</li>
+    <li>Edmondson, A. (1999). <i>Psychological safety and learning behavior in work teams.</i> Administrative Science Quarterly, 44(2), 350–383. DOI 10.2307/2666999. <a href="https://journals.sagepub.com/doi/10.2307/2666999" target="_blank" rel="noopener">SAGE</a>.</li>
+    <li>Gollwitzer, P. M.; Sheeran, P. (2006). <i>Implementation intentions and goal achievement: a meta-analysis of effects and processes.</i> Advances in Experimental Social Psychology, 38, 69–119. <a href="https://www.socmot.uni-konstanz.de/publications/implementation-intentions-and-goal-achievement-meta-analysis-effects-and-processes" target="_blank" rel="noopener">Universidade de Konstanz</a>.</li>
+  </ul>
+  <h3>O que ficou sem confirmação</h3>
+  <ul>
+    <li>A frase "alocar o desconforto da falha para fora de si", atribuída a Tetlock no programa, não localizei nas fontes abertas. Usei a ideia geral, que as fontes confirmam: o comportamento muda conforme a avaliação esperada.</li>
+    <li>A Escada de 8 degraus parece adaptada da literatura de accountability (como o Oz Principle), mas não é idêntica à original.</li>
+    <li>O conceito de Koppell foi criado para organizações públicas. A aplicação a prazo versus qualidade em obra é uma analogia do programa.</li>
+    <li>As partes marcadas como "adaptação minha" (como montar o RACI, checklist de pedido, reporte semanal, roteiro de 4 semanas e autoavaliação) são propostas deste material. Não vêm de fonte e não foram validadas.</li>
+  </ul>
+</section>
+
+</main>
+
+<footer><div class="wrap">Curso: Como se tornar um perfil Accountable · Material de apoio · Grupo Gadens · Elaborado em novembro de 2026.</div></footer>
+
+<script>
+(function(){
+  // ---- armazenamento seguro ----
+  function sget(k){try{return localStorage.getItem(k)}catch(e){return null}}
+  function sset(k,v){try{localStorage.setItem(k,v)}catch(e){}}
+  function sdel(k){try{localStorage.removeItem(k)}catch(e){}}
+
+  // ---- quizzes ----
+  document.querySelectorAll('[data-quiz]').forEach(function(q){
+    var correct=parseInt(q.getAttribute('data-correct'),10);
+    var fb=q.querySelector('.fb');
+    q.querySelectorAll('.opt').forEach(function(b){
+      b.addEventListener('click',function(){
+        q.querySelectorAll('.opt').forEach(function(o){o.classList.remove('right','wrong')});
+        var i=parseInt(b.getAttribute('data-i'),10);
+        b.classList.add(i===correct?'right':'wrong');
+        q.querySelector('.opt[data-i="'+correct+'"]').classList.add('right');
+        fb.style.display='block';
+      });
+    });
+  });
+
+  // ---- autoavaliação ----
+  var BEH=['Assumo compromissos claros (com data)','Antecipo riscos','Comunico desvios antes de outros perceberem','Levo solução junto com o problema','Aprendo com erros, sem buscar culpado','Reconheço limites e peço ajuda'];
+  var box=document.getElementById('beh'), out=document.getElementById('aval');
+  var vals;
+  try{vals=JSON.parse(sget('acc_aval')||'null')}catch(e){vals=null}
+  if(!Array.isArray(vals)||vals.length!==6) vals=[3,3,3,3,3,3];
+  BEH.forEach(function(t,i){
+    var d=document.createElement('div'); d.className='beh';
+    d.innerHTML='<label for="b'+i+'" style="margin:0;font-weight:normal">'+(i+1)+'. '+t+'</label><input type="range" id="b'+i+'" min="1" max="5" step="1" value="'+vals[i]+'"><b id="bv'+i+'">'+vals[i]+'</b>';
+    box.appendChild(d);
+    d.querySelector('input').addEventListener('input',function(e){
+      vals[i]=parseInt(e.target.value,10);
+      document.getElementById('bv'+i).textContent=vals[i];
+      sset('acc_aval',JSON.stringify(vals)); render();
+    });
+  });
+  function render(){
+    var soma=vals.reduce(function(a,b){return a+b},0);
+    var idx=vals.map(function(v,i){return {v:v,i:i}}).sort(function(a,b){return a.v-b.v||a.i-b.i});
+    var low=idx.slice(0,2);
+    var h='<b>Seu resultado: '+soma+' de 30</b><div class="bar" style="margin:8px 0"><i style="width:'+Math.round(soma/30*100)+'%"></i></div>';
+    h+='<p>Os dois pontos com menor nota, bons candidatos para o plano:</p><ul>';
+    low.forEach(function(x){h+='<li><b>'+(x.i+1)+'. '+BEH[x.i]+'</b> (nota '+x.v+')</li>'});
+    h+='</ul><p style="color:var(--mut);font-size:14px">Dica: escolha só um ou dois. Mudar tudo ao mesmo tempo costuma não funcionar.</p>';
+    out.innerHTML=h; out.style.display='block';
+  }
+  render();
+  document.getElementById('limpaAval').addEventListener('click',function(){
+    vals=[3,3,3,3,3,3]; sdel('acc_aval');
+    BEH.forEach(function(_,i){document.getElementById('b'+i).value=3;document.getElementById('bv'+i).textContent=3});
+    render();
+  });
+
+  // ---- plano ----
+  var ids=['p_trans','p_deg','p_ex','p_beh','p_acao','p_se','p_med','p_quem','p_ini','w1a','w1b','w1c','w2a','w2b','w2c','w3a','w3b','w3c','w4a','w4b','w4c'];
+  var saved; try{saved=JSON.parse(sget('acc_plano')||'{}')}catch(e){saved={}}
+  function save(){
+    var o={}; ids.forEach(function(id){var el=document.getElementById(id); o[id]=el.type==='checkbox'?el.checked:el.value});
+    sset('acc_plano',JSON.stringify(o));
+  }
+  ids.forEach(function(id){
+    var el=document.getElementById(id);
+    if(saved[id]!==undefined){ if(el.type==='checkbox') el.checked=!!saved[id]; else el.value=saved[id]; }
+    el.addEventListener('input',save); el.addEventListener('change',save);
+  });
+  document.getElementById('limpaPlano').addEventListener('click',function(){
+    if(!window.confirm('Apagar tudo que você preencheu no plano?')) return;
+    ids.forEach(function(id){var el=document.getElementById(id); if(el.type==='checkbox') el.checked=false; else el.value='';});
+    sdel('acc_plano');
+  });
+  document.getElementById('imprime').addEventListener('click',function(){window.print()});
+})();
+</script>
+</body>
+</html>
